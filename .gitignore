@@ -1,0 +1,147 @@
+# ============================================================
+# LMS Project — .gitignore
+# Stack: FastAPI · LangGraph · Neo4j · Moodle · Docker · Ollama
+# ============================================================
+
+# ----------------------------------
+# Python / FastAPI / LangGraph
+# ----------------------------------
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+*.pyd
+*.pyo
+
+# Virtual environments
+.venv/
+venv/
+env/
+ENV/
+.env/
+Pipfile.lock
+
+# Distribution / packaging
+dist/
+build/
+*.egg-info/
+*.egg
+.eggs/
+wheels/
+
+# Testing & coverage
+.pytest_cache/
+.coverage
+coverage.xml
+htmlcov/
+.tox/
+nosetests.xml
+*.log
+
+# Type checkers & linters
+.mypy_cache/
+.dmypy.json
+.ruff_cache/
+.pytype/
+
+# Jupyter notebooks checkpoints
+.ipynb_checkpoints/
+
+# ----------------------------------
+# Environment & Secrets
+# ----------------------------------
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.crt
+secrets/
+credentials/
+config/local_*.yaml
+config/local_*.json
+
+# ----------------------------------
+# Neo4j
+# ----------------------------------
+neo4j/data/
+neo4j/logs/
+neo4j/import/
+neo4j/plugins/
+*.dump                  # Database dump files
+
+# ----------------------------------
+# Docker
+# ----------------------------------
+docker-compose.override.yml
+.docker/
+
+# ----------------------------------
+# Moodle
+# ----------------------------------
+moodledata/
+moodle/config.php       # Contains DB credentials
+moodle/local/cache/
+moodle/.htaccess
+
+# ----------------------------------
+# Ollama / LLM model files
+# ----------------------------------
+models/
+*.gguf
+*.ggml
+*.bin
+ollama/
+
+# ----------------------------------
+# ML / Data files
+# ----------------------------------
+*.csv
+*.tsv
+*.parquet
+*.pkl
+*.joblib
+*.h5
+*.hdf5
+data/raw/
+data/processed/
+data/interim/
+logs/
+mlruns/
+artifacts/
+
+# ----------------------------------
+# IDE & OS
+# ----------------------------------
+# VSCode
+.vscode/
+*.code-workspace
+
+# JetBrains / PyCharm
+.idea/
+*.iml
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+
+# Linux
+*~
+
+# ----------------------------------
+# Temporary / misc
+# ----------------------------------
+tmp/
+temp/
+*.tmp
+*.bak
+*.swp
+*.swo
+node_modules/
