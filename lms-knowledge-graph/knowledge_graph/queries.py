@@ -227,3 +227,36 @@ def get_concept(concept_name: str) -> dict | None:
         result = session.run(query, name=concept_name)
         record = result.single()
         return dict(record) if record else None
+    
+    
+    
+    
+    # ─────────────────────────────────────────────────────────────
+# 7. CONTENT LOCATION
+# Used by: RAG Search agent
+# "Where in the textbook is this concept taught?"
+# ─────────────────────────────────────────────────────────────
+
+def get_content_location(concept_name: str) -> list[dict]:
+    """
+    Returns all textbook locations where a concept is taught.
+    Used by the RAG agent to point students to the right pages.
+
+    Example:
+        get_content_location("TCP Congestion Control")
+        → [{"course": "Computer Networks", "type": "PDF",
+            "chapter": 6, "page_start": 571, "page_end": 580}]
+    """
+    query = """
+        MATCH (c:Concept {name: $name})-[:TAUGHT_IN]->(loc:ContentLocation)
+        RETURN loc.course AS course,
+               loc.type AS type,
+               loc.chapter AS chapter,
+               loc.page_start AS page_start,
+               loc.page_end AS page_end
+        ORDER BY loc.course, loc.chapter
+    """
+    driver = get_driver()
+    with driver.session() as session:
+        result = session.run(query, name=concept_name)
+        return [dict(record) for record in result]

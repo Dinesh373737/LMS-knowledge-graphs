@@ -3,6 +3,7 @@
 # Usage: python main.py
 
 from knowledge_graph.queries import (
+    get_content_location,
     get_prerequisites,
     get_concept_neighbors,
     get_module_concepts,
@@ -55,6 +56,16 @@ if __name__ == "__main__":
         test(
             "get_concept('Paging')",
             get_concept("Paging")
+        )
+        # 7. Content location
+        test(
+            "get_content_location('TCP Congestion Control')",
+            get_content_location("TCP Congestion Control")
+        )
+
+        test(
+            "get_content_location('Paging')",
+            get_content_location("Paging")
         )
 
     finally:
